@@ -1,6 +1,6 @@
 <template>
 
-  <v-toolbar app dense>
+  <v-toolbar app dense fixed>
     <img :src="icon" :alt="title" width="18">
     <v-toolbar-title :class="toolbarClass">
       <slot name="title"></slot>
@@ -83,6 +83,7 @@
 
 <script>
   export default {
+    name: 'nytToolbar',
     data () {
       return {
         toolbarClass: 'grey--text'

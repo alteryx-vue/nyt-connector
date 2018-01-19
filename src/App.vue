@@ -7,7 +7,7 @@
       <!-- <template slot="page">{{ page }}</template> -->
     </nyt-toolbar>
 
-      <v-content app>
+      <v-content>
         <v-container>
 
           <nyt-connection v-show="page == 0"></nyt-connection>

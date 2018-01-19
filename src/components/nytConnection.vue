@@ -4,6 +4,11 @@
 
     <h2 class="mb-3">{{ pages[page].name }}</h2>
 
+      <v-alert type="error" :value="connectError">
+        Error connecting to {{ baseUrl }}.  Please update/check your API key or get a new one @  https://developer.nytimes.com.<br>
+        API Response: {{ apiError }}
+      </v-alert>
+
     <form>
       <v-text-field
         label="NYT API Key"
@@ -13,7 +18,8 @@
       <v-btn 
         color="primary" 
         @click="connect" 
-        :disabled="$v.$invalid">
+        :loading="loading"
+        :disabled="loading">
         connect
       </v-btn>
     </form>
@@ -28,9 +34,14 @@
   import axios from 'axios';
 
   export default {
-  	name: 'JiraConnection',
+  	name: 'nytConnection',
     validations: {
       apiKey: { required }
+    },
+    data () {
+      return {
+        loading: false,
+      }
     },
     computed: {
       page() {
@@ -38,6 +49,15 @@
       },
       pages() {
         return this.$store.state.pages
+      },
+      connectError() {
+        return this.$store.state.connectError
+      },
+      apiError() {
+        return this.$store.state.apiError
+      },
+      baseUrl() {
+        return this.$store.state.baseUrl
       },
       url: {
         get () {
@@ -55,12 +75,6 @@
           this.$store.commit('updateKey', value)
         }
       },
-      urlErrors () {
-        const errors = []
-        if (!this.$v.url.$dirty) return errors
-        !this.$v.url.required && errors.push('Site URL is required.')
-        return errors
-      },
       apiKeyErrors () {
         const errors = []
         if (!this.$v.apiKey.$dirty) return errors
@@ -70,19 +84,26 @@
     },
     methods: {
       connect () {
-
+        this.loading = true
         this.$v.$touch()
 
-        // GET Jira Projects
+        // GET Top Stories to check API Key
         axios.get(this.$store.state.url  + "?api-key=" + this.$store.state.apiKey)
         .then(response => {
-                            this.$store.commit('updateStories', response.data.results) 
-                            this.$store.state.page = 1
+                            this.$store.commit('updateConnected',true)
+                            this.$store.commit('updateConnectError',false)
+                            this.$store.commit('updateApiError',null)
+                            this.$store.commit('updatePage', 1)
+                            this.loading = false
                            }
         )
-        .catch(response => {alert('Failure')})
-
-        // this.$store.state.page = 1
+        .catch(response => {
+                              this.$store.commit('updateConnected',false)
+                              this.$store.commit('updateConnectError',true)
+                              this.$store.commit('updateApiError',response.message)
+                              this.loading = false
+                            }
+        )
       },
       updateUrl (e) {
         this.$store.commit('updateUrl', e.target.value)

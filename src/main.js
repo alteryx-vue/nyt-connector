@@ -50,20 +50,31 @@ const store = new Vuex.Store({
 			'insider'
 		],
 		selections: [],
+		baseUrl: 'https://api.nytimes.com',
 		url: 'https://api.nytimes.com/svc/topstories/v2/home.json',
 		apiKey: 'b49fd883e0e34eb88d5089930814e0be',
-		stories: [],
+		connected: false,
+		connectError: false,
 		apiError: []
 	},
 	mutations: {
 	  updateKey (state, v) {
 	    state.apiKey = v
 	  },
-	  updateStories (state, v) {
-	    state.stories = v
+	  updateConnected (state, v) {
+	    state.connected = v
+	  },
+	  updateConnectError (state, v) {
+	  	state.connectError = v
+	  },
+	  updateApiError (state, v) {
+	  	state.apiError = v
 	  },
 	  updateSelections (state, v) {
 	    state.selections = v
+	  },
+	  updatePage (state, v) {
+	  	state.page = v
 	  }
 	}
 })

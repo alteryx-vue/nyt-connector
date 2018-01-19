@@ -1,6 +1,6 @@
 <template>
 
-    <v-bottom-nav absolute value="true" color="transparent" :active="page">
+    <v-bottom-nav fixed value="true" color="white" :active="page">
 
       <v-btn flat color="blue darken-2" v-for="p in pages" :key="p.id" :value="page.id" @click="setPage(p.id)">
         <span>{{ p.name }}</span>
@@ -14,7 +14,7 @@
 <script>
 
   export default {
-    name: 'JiraNav',
+    name: 'nytNav',
     computed: {
       page() {
         return this.$store.state.page
