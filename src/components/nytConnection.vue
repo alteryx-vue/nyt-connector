@@ -11,13 +11,13 @@
 
     <form>
       <v-text-field
-        label="NYT API Key"
+        label="API Key"
         v-model="apiKey"
         :error-messages="apiKeyErrors">
       </v-text-field>
-      <v-btn 
-        color="primary" 
-        @click="connect" 
+      <v-btn
+        color="primary"
+        @click="connect"
         :loading="loading"
         :disabled="loading">
         connect
@@ -114,4 +114,3 @@
     },
   }
 </script>
-

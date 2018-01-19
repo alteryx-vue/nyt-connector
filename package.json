@@ -1,6 +1,6 @@
 {
-  "name": "jira-input",
-  "description": "An Alteryx Jira input connector built with Vue.js and Vuetify",
+  "name": "nyt-connector",
+  "description": "An Alteryx NYT input connector built with Vue.js and Vuetify",
   "version": "1.0.0",
   "author": "Taylor Cox <coxta45@gmail.com>",
   "private": true,
@@ -16,9 +16,10 @@
     "vuex": "^3.0.1"
   },
   "devDependencies": {
+    "babel": "^6.23.0",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
-    "babel-preset-env": "^1.6.0",
+    "babel-preset-env": "^1.6.1",
     "babel-preset-stage-2": "^6.24.1",
     "cross-env": "^5.0.5",
     "css-loader": "^0.28.7",

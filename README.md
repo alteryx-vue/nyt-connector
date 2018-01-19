@@ -3,7 +3,7 @@
 
 > Alteryx HTML SDK template built with Vue.js and Vuetify
 
-Alteryx NYT Connecter - bottom navigation w/ top toolbar for page/tab titles and developer options icon. 
+Alteryx NYT Connecter - bottom navigation w/ top toolbar for page/tab titles and developer options icon.
 
 ### Requirements
 - [NodeJS/npm](https://nodejs.org)
@@ -15,14 +15,14 @@ Alteryx NYT Connecter - bottom navigation w/ top toolbar for page/tab titles and
 ### clone to the Alteryx HTML plugins directory
 
 ``` bash
-# usually in the following location
-cd .../HtmlPlugins
+# typically the following location
+cd "c:/Program Files/Alteryx/bin/HtmlPlugins"
 
 # clone repo
-git clone https://github.com/alteryx-vue/nyt
+git clone https://github.com/alteryx-vue/nyt-connector
 
 # change directory to project
-cd nyt
+cd nyt-connector
 ```
 
 ## Build Setup & Testing
@@ -36,11 +36,11 @@ Default production dependencies:
 
 ``` bash
   "dependencies": {
+    "axios": "^0.17.1",
     "vue": "^2.5.3",
     "vuelidate": "^0.6.1",
     "vuetify": "^0.17.4",
-    "vuex": "^3.0.1",
-    "axios": "^0.17.1",
+    "vuex": "^3.0.1"
   }
 ```
 

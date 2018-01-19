@@ -15,7 +15,7 @@ Vue.use(Vuelidate)
 const store = new Vuex.Store({
 	state: {
 		title: 'NYT',
-		icon: 'nyt.png',
+		icon: 'icon.png',
 		page: 0,
 		pages: [
 		  { id: 0, name: 'Connection', icon: 'power_settings_new' },
