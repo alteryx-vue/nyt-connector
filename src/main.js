@@ -19,10 +19,37 @@ const store = new Vuex.Store({
 		page: 0,
 		pages: [
 		  { id: 0, name: 'Connection', icon: 'power_settings_new' },
-		  { id: 1, name: 'Categories', icon: 'folder_open' },
-		  { id: 2, name: 'Filters', icon: 'filter_list' },
-		  { id: 3, name: 'Fields', icon: 'check' }
+		  { id: 1, name: 'Sections', icon: 'folder_open' },
 		],
+		sections: [
+			'home',
+			'opinion',
+			'world',
+			'national',
+			'politics',
+			'upshot',
+			'nyregion',
+			'business',
+			'technology',
+			'science',
+			'health',
+			'sports',
+			'arts',
+			'books',
+			'movies',
+			'theater',
+			'sundayreview',
+			'fashion',
+			'tmagazine',
+			'food',
+			'travel',
+			'magazine',
+			'realestate',
+			'automobiles',
+			'obituaries',
+			'insider'
+		],
+		selections: [],
 		url: 'https://api.nytimes.com/svc/topstories/v2/home.json',
 		apiKey: 'b49fd883e0e34eb88d5089930814e0be',
 		stories: [],
@@ -34,6 +61,9 @@ const store = new Vuex.Store({
 	  },
 	  updateStories (state, v) {
 	    state.stories = v
+	  },
+	  updateSelections (state, v) {
+	    state.selections = v
 	  }
 	}
 })

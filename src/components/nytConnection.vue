@@ -6,7 +6,6 @@
 
     <form>
       <v-text-field
-        type="password"
         label="NYT API Key"
         v-model="apiKey"
         :error-messages="apiKeyErrors">
