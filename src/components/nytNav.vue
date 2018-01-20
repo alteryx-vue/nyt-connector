@@ -17,15 +17,15 @@
     name: 'nytNav',
     computed: {
       page() {
-        return this.$store.state.page
+        return this.$store.state.config.page
       },
       pages() {
-        return this.$store.state.pages
+        return this.$store.state.config.pages
       }
     },
     methods: {
       setPage(p) {
-        this.$store.state.page = p
+        this.$store.state.config.page = p
       }
     }
   }

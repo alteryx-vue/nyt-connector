@@ -21,9 +21,9 @@
 
       </v-list>
 
-<!--       <v-alert outline :type="alertType" :value="showAlert" class="mb-3">
+      <v-alert outline :type="alertType" :value="showAlert" class="mb-3">
         {{ alertText }}
-      </v-alert> -->
+      </v-alert>
 
       <v-btn 
         small
@@ -45,29 +45,29 @@
   	name: 'nytSections',
     computed: {
       alertType() {
-        return (this.$store.state.connectError && (this.$store.state.apiKey == this.$store.state.lastKey)) || !(this.$store.state.apiKey.length > 0) ? 'error' : (this.$store.state.apiKey !== this.$store.state.lastKey) ? 'warning' : 'success'
+        return (this.$store.state.config.connectError && (this.$store.state.config.apiKey == this.$store.state.config.lastKey)) || !(this.$store.state.config.apiKey.length > 0) ? 'error' : (this.$store.state.config.apiKey !== this.$store.state.config.lastKey) ? 'warning' : 'success'
       },
       alertText() {
         const err = 'Please check your API key.  NYT provides free keys at https://developer.nytimes.com'
         const warn = 'New API key needs validation..'
         const runworthy = 'Connected'
-        return (this.$store.state.connectError && (this.$store.state.apiKey == this.$store.state.lastKey)) || !(this.$store.state.apiKey.length > 0) ? err : (this.$store.state.apiKey !== this.$store.state.lastKey) ? warn : runworthy
+        return (this.$store.state.config.connectError && (this.$store.state.config.apiKey == this.$store.state.config.lastKey)) || !(this.$store.state.config.apiKey.length > 0) ? err : (this.$store.state.config.apiKey !== this.$store.state.config.lastKey) ? warn : runworthy
       },
       showAlert() {
-        return (this.$store.state.connects && this.$store.state.apiKey !== this.$store.state.lastKey) || this.$store.state.connectError && (this.$store.state.apiKey == this.$store.state.lastKey)
+        return (this.$store.state.config.connects && this.$store.state.config.apiKey !== this.$store.state.config.lastKey) || (this.$store.state.config.connectError && this.$store.state.config.apiKey == this.$store.state.config.lastKey)
       },
       sections() {
-        return this.$store.state.sections
+        return this.$store.state.config.sections
       },
       page() {
-        return this.$store.state.page
+        return this.$store.state.config.page
       },
       pages() {
-        return this.$store.state.pages
+        return this.$store.state.config.pages
       },
       selections: {
         get () {
-          return this.$store.state.selections
+          return this.$store.state.config.selections
         },
         set (value) {
           this.$store.commit('updateSelections', value)

@@ -27,13 +27,12 @@
         flat
         color="primary"
         @click="moveOn"
-        :disabled="!showAlert">
+        :disabled="showAlert">
         sections
         <v-icon right dark>arrow_forward</v-icon>
       </v-btn>
     </form>
-    <p>Show an alert: {{ showAlert }}<br>
-      because "Connects" = {{ connects }}</p>
+
   </div>
 
 </template>
@@ -54,35 +53,30 @@
       }
     },
     computed: {
-      connects() {
-        return this.$store.state.connects
-      },
       alertType() {
-        return this.$store.state.connectError && (this.$store.state.apiKey == this.$store.state.lastKey) ? 'error' : (this.$store.state.apiKey !== this.$store.state.lastKey) ? 'warning' : 'success'
+        return this.$store.state.config.connectError && (this.$store.state.config.apiKey == this.$store.state.config.lastKey) ? 'error' : (this.$store.state.config.apiKey !== this.$store.state.config.lastKey) ? 'warning' : 'success'
       },
       showAlert() {
-
-        return this.$store.state.connects
-
+        return (this.$store.state.config.connects && this.$store.state.config.apiKey !== this.$store.state.config.lastKey) || (this.$store.state.config.connectError && this.$store.state.config.apiKey == this.$store.state.config.lastKey)
       },
       alertText() {
         const err = 'Please check your API key.  NYT provides free keys at https://developer.nytimes.com'
         const warn = 'New API key needs validation..'
         const runworthy = 'Connected'
-        return this.$store.state.connectError && (this.$store.state.apiKey == this.$store.state.lastKey) ? err : (this.$store.state.apiKey !== this.$store.state.lastKey) ? warn : runworthy
+        return this.$store.state.config.connectError && (this.$store.state.config.apiKey == this.$store.state.config.lastKey) ? err : (this.$store.state.config.apiKey !== this.$store.state.config.lastKey) ? warn : runworthy
       },
       checkable() {
-        return this.$store.state.apiKey.length > 0
+        return this.$store.state.config.apiKey.length > 0
       },
       page() {
-        return this.$store.state.page
+        return this.$store.state.config.page
       },
       pages() {
-        return this.$store.state.pages
+        return this.$store.state.config.pages
       },
       apiKey: {
         get () {
-          return this.$store.state.apiKey
+          return this.$store.state.config.apiKey
         },
         set (value) {
           this.$store.commit('updateKey', value)
@@ -103,7 +97,7 @@
         this.loading = true
 
         // GET Top Stories to check API Key
-        axios.get(this.$store.state.url  + "?api-key=" + this.$store.state.apiKey)
+        axios.get(this.$store.state.config.url  + "?api-key=" + this.$store.state.config.apiKey)
         .then(response => {
                             this.$store.commit('updateConnected',true)
                             this.$store.commit('updateConnectError',false)

@@ -86,7 +86,7 @@
     },
     computed: {
       appTitle() {
-        return this.$store.state.title
+        return this.$store.state.config.title
       },
     }
   }
