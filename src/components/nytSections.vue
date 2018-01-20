@@ -44,17 +44,35 @@
   export default {
   	name: 'nytSections',
     computed: {
+      showAlert() {
+        if (this.$store.state.config.apiKey === this.$store.state.config.lastKey && this.$store.state.config.connectError > 0 ) {
+          return true
+        } else if (this.$store.state.config.apiKey !== this.$store.state.config.lastKey && this.$store.state.config.connects > 0) {
+          return true
+        } else {
+          return false
+        }
+      },
       alertType() {
-        return (this.$store.state.config.connectError && (this.$store.state.config.apiKey == this.$store.state.config.lastKey)) || !(this.$store.state.config.apiKey.length > 0) ? 'error' : (this.$store.state.config.apiKey !== this.$store.state.config.lastKey) ? 'warning' : 'success'
+        if (this.$store.state.config.apiKey === this.$store.state.config.lastKey && this.$store.state.config.connectError > 0 ) {
+          return 'error'
+        } else if (this.$store.state.config.apiKey !== this.$store.state.config.lastKey && this.$store.state.config.connects > 0) {
+          return 'warning'
+        } else {
+          return 'success'
+        }
       },
       alertText() {
         const err = 'Please check your API key.  NYT provides free keys at https://developer.nytimes.com'
         const warn = 'New API key needs validation..'
         const runworthy = 'Connected'
-        return (this.$store.state.config.connectError && (this.$store.state.config.apiKey == this.$store.state.config.lastKey)) || !(this.$store.state.config.apiKey.length > 0) ? err : (this.$store.state.config.apiKey !== this.$store.state.config.lastKey) ? warn : runworthy
-      },
-      showAlert() {
-        return (this.$store.state.config.connects && this.$store.state.config.apiKey !== this.$store.state.config.lastKey) || (this.$store.state.config.connectError && this.$store.state.config.apiKey == this.$store.state.config.lastKey)
+        if (this.$store.state.config.apiKey === this.$store.state.config.lastKey && this.$store.state.config.connectError > 0 ) {
+          return err
+        } else if (this.$store.state.config.apiKey !== this.$store.state.config.lastKey && this.$store.state.config.connects > 0) {
+          return warn
+        } else {
+          return runworthy
+        }
       },
       sections() {
         return this.$store.state.config.sections

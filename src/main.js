@@ -12,6 +12,13 @@ Vue.use(Vuelidate)
 
 // b49fd883e0e34eb88d5089930814e0be
 
+// render app
+const app = new Vue({
+  el: '#app',
+  store,
+  render: h => h(App)
+})
+
 window.Alteryx.Gui = {
 
 	SetConfiguration: j => {
@@ -34,10 +41,3 @@ window.Alteryx.Gui = {
 	}
 
 }
-
-// render app
-const app = new Vue({
-  el: '#app',
-  store,
-  render: h => h(App)
-})

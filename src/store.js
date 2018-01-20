@@ -45,10 +45,9 @@ export const store = new Vuex.Store({
 			url: 'https://api.nytimes.com/svc/topstories/v2/home.json',
 			apiKey: '',
 			lastKey: '',
-			keyChange: false,
-			connected: false,
-			connects: false,
-			connectError: false,
+			connected: 0,
+			connects: 0,
+			connectError: 0,
 			apiError: '',
 		}
 	},
@@ -72,10 +71,7 @@ export const store = new Vuex.Store({
 	  	state.config.page = v
 	  },
 	  updateConnects (state) {
-	  	state.config.connects = true
-	  },
-	  updateKeyChange (state, v) {
-	  	state.config.keyChange = v
+	  	state.config.connects ++
 	  },
 	  updateLastKey (state) {
 	  	state.config.lastKey = state.config.apiKey

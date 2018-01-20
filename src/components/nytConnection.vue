@@ -27,7 +27,7 @@
         flat
         color="primary"
         @click="moveOn"
-        :disabled="showAlert">
+        :disabled="!canMoveOn">
         sections
         <v-icon right dark>arrow_forward</v-icon>
       </v-btn>
@@ -53,20 +53,41 @@
       }
     },
     computed: {
-      alertType() {
-        return this.$store.state.config.connectError && (this.$store.state.config.apiKey == this.$store.state.config.lastKey) ? 'error' : (this.$store.state.config.apiKey !== this.$store.state.config.lastKey) ? 'warning' : 'success'
-      },
       showAlert() {
-        return (this.$store.state.config.connects && this.$store.state.config.apiKey !== this.$store.state.config.lastKey) || (this.$store.state.config.connectError && this.$store.state.config.apiKey == this.$store.state.config.lastKey)
+        if (this.$store.state.config.apiKey === this.$store.state.config.lastKey && this.$store.state.config.connectError > 0 ) {
+          return true
+        } else if (this.$store.state.config.apiKey !== this.$store.state.config.lastKey && this.$store.state.config.connects > 0) {
+          return true
+        } else {
+          return false
+        }
+      },
+      alertType() {
+        if (this.$store.state.config.apiKey === this.$store.state.config.lastKey && this.$store.state.config.connectError > 0 ) {
+          return 'error'
+        } else if (this.$store.state.config.apiKey !== this.$store.state.config.lastKey && this.$store.state.config.connects > 0) {
+          return 'warning'
+        } else {
+          return 'success'
+        }
       },
       alertText() {
         const err = 'Please check your API key.  NYT provides free keys at https://developer.nytimes.com'
         const warn = 'New API key needs validation..'
         const runworthy = 'Connected'
-        return this.$store.state.config.connectError && (this.$store.state.config.apiKey == this.$store.state.config.lastKey) ? err : (this.$store.state.config.apiKey !== this.$store.state.config.lastKey) ? warn : runworthy
+        if (this.$store.state.config.apiKey === this.$store.state.config.lastKey && this.$store.state.config.connectError > 0 ) {
+          return err
+        } else if (this.$store.state.config.apiKey !== this.$store.state.config.lastKey && this.$store.state.config.connects > 0) {
+          return warn
+        } else {
+          return runworthy
+        }
       },
       checkable() {
         return this.$store.state.config.apiKey.length > 0
+      },
+      canMoveOn() {
+        return this.$store.state.config.apiKey === this.$store.state.config.lastKey && this.$store.state.config.connected > 0
       },
       page() {
         return this.$store.state.config.page
@@ -80,7 +101,6 @@
         },
         set (value) {
           this.$store.commit('updateKey', value)
-          this.$store.commit('updateKeyChange', true)
         }
       },
       apiKeyErrors () {
@@ -99,22 +119,20 @@
         // GET Top Stories to check API Key
         axios.get(this.$store.state.config.url  + "?api-key=" + this.$store.state.config.apiKey)
         .then(response => {
-                            this.$store.commit('updateConnected',true)
-                            this.$store.commit('updateConnectError',false)
+                            this.$store.commit('updateConnected',1)
+                            this.$store.commit('updateConnectError',0)
                             this.$store.commit('updateApiError',null)
                             this.$store.commit('updateLastKey')
                             this.$store.commit('updateConnects')
-                            this.$store.commit('updateKeyChange', false)
                             this.loading = false
                            }
         )
         .catch(response => {
-                              this.$store.commit('updateConnected',false)
-                              this.$store.commit('updateConnectError',true)
+                              this.$store.commit('updateConnected',0)
+                              this.$store.commit('updateConnectError',1)
                               this.$store.commit('updateApiError',response.message)
                               this.$store.commit('updateLastKey')
                               this.$store.commit('updateConnects')
-                              this.$store.commit('updateKeyChange', false)
                               this.loading = false
                             }
         )
