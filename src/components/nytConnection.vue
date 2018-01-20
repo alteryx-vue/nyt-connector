@@ -2,11 +2,10 @@
 
   <div>
 
-    <h2 class="mb-3">{{ pages[page].name }}</h2>
+    <h3 class="mb-3">{{ pages[page].name }}</h3>
 
-      <v-alert type="error" :value="connectError">
-        Error connecting to {{ baseUrl }}.  Please update/check your API key or get a new one @  https://developer.nytimes.com.<br>
-        API Response: {{ apiError }}
+      <v-alert outline :type="alertType" :value="showAlert" class="mb-3">
+        {{ alertText }}
       </v-alert>
 
     <form>
@@ -16,14 +15,25 @@
         :error-messages="apiKeyErrors">
       </v-text-field>
       <v-btn
+        small
         color="primary"
         @click="connect"
         :loading="loading"
-        :disabled="loading">
-        connect
+        :disabled="!checkable">
+        check connection
+      </v-btn>
+      <v-btn
+        small
+        flat
+        color="primary"
+        @click="moveOn"
+        :disabled="!showAlert">
+        sections
+        <v-icon right dark>arrow_forward</v-icon>
       </v-btn>
     </form>
-
+    <p>Show an alert: {{ showAlert }}<br>
+      because "Connects" = {{ connects }}</p>
   </div>
 
 </template>
@@ -44,28 +54,31 @@
       }
     },
     computed: {
+      connects() {
+        return this.$store.state.connects
+      },
+      alertType() {
+        return this.$store.state.connectError && (this.$store.state.apiKey == this.$store.state.lastKey) ? 'error' : (this.$store.state.apiKey !== this.$store.state.lastKey) ? 'warning' : 'success'
+      },
+      showAlert() {
+
+        return this.$store.state.connects
+
+      },
+      alertText() {
+        const err = 'Please check your API key.  NYT provides free keys at https://developer.nytimes.com'
+        const warn = 'New API key needs validation..'
+        const runworthy = 'Connected'
+        return this.$store.state.connectError && (this.$store.state.apiKey == this.$store.state.lastKey) ? err : (this.$store.state.apiKey !== this.$store.state.lastKey) ? warn : runworthy
+      },
+      checkable() {
+        return this.$store.state.apiKey.length > 0
+      },
       page() {
         return this.$store.state.page
       },
       pages() {
         return this.$store.state.pages
-      },
-      connectError() {
-        return this.$store.state.connectError
-      },
-      apiError() {
-        return this.$store.state.apiError
-      },
-      baseUrl() {
-        return this.$store.state.baseUrl
-      },
-      url: {
-        get () {
-          return this.$store.state.url
-        },
-        set (value) {
-          this.$store.commit('updateUrl', value)
-        }
       },
       apiKey: {
         get () {
@@ -73,6 +86,7 @@
         },
         set (value) {
           this.$store.commit('updateKey', value)
+          this.$store.commit('updateKeyChange', true)
         }
       },
       apiKeyErrors () {
@@ -84,8 +98,9 @@
     },
     methods: {
       connect () {
-        this.loading = true
+      
         this.$v.$touch()
+        this.loading = true
 
         // GET Top Stories to check API Key
         axios.get(this.$store.state.url  + "?api-key=" + this.$store.state.apiKey)
@@ -93,7 +108,9 @@
                             this.$store.commit('updateConnected',true)
                             this.$store.commit('updateConnectError',false)
                             this.$store.commit('updateApiError',null)
-                            this.$store.commit('updatePage', 1)
+                            this.$store.commit('updateLastKey')
+                            this.$store.commit('updateConnects')
+                            this.$store.commit('updateKeyChange', false)
                             this.loading = false
                            }
         )
@@ -101,9 +118,15 @@
                               this.$store.commit('updateConnected',false)
                               this.$store.commit('updateConnectError',true)
                               this.$store.commit('updateApiError',response.message)
+                              this.$store.commit('updateLastKey')
+                              this.$store.commit('updateConnects')
+                              this.$store.commit('updateKeyChange', false)
                               this.loading = false
                             }
         )
+      },
+      moveOn() {
+        this.$store.commit('updatePage', 1)
       },
       updateUrl (e) {
         this.$store.commit('updateUrl', e.target.value)

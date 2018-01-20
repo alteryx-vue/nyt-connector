@@ -2,10 +2,7 @@
 
   <v-app>
 
-    <nyt-toolbar>
-      <template slot="title">{{ title }}</template>
-      <!-- <template slot="page">{{ page }}</template> -->
-    </nyt-toolbar>
+    <nyt-toolbar app></nyt-toolbar>
 
       <v-content>
         <v-container>
@@ -15,7 +12,9 @@
 
         </v-container>
       </v-content>
-    <nyt-nav></nyt-nav>
+
+    <nyt-nav app></nyt-nav>
+    
   </v-app>
 
 </template>
@@ -35,9 +34,6 @@
         nytNav
     },
     computed: {
-      title() {
-        return this.$store.state.title
-      },
       page() {
         return this.$store.state.page
       }

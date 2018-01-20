@@ -1,12 +1,7 @@
 <template>
 
-  <v-toolbar app dense fixed>
-    <img :src="icon" :alt="title" width="18">
-    <v-toolbar-title :class="toolbarClass">
-      <slot name="title"></slot>
-<!--       <v-icon :class="toolbarClass">chevron_right</v-icon>
-      <slot name="page"></slot> -->
-    </v-toolbar-title>
+  <v-toolbar app dense fixed color="grey lighten-2">
+    <img src="public/banner.png" :alt="appTitle" height="24">
     <v-spacer></v-spacer>
 
     <v-bottom-sheet>
@@ -14,18 +9,18 @@
         <v-icon>fa-code</v-icon>
       </v-btn>
       <v-card tile>
-        <v-list two-line>
+        <v-list two-line dark>
           <v-subheader>Development Sources</v-subheader>
 
           <v-list-tile>
             <v-list-tile-avatar>
               <v-avatar size="32px" tile>
-                <v-icon class="black--text">fa-github</v-icon>
+                <v-icon>fa-github</v-icon>
               </v-avatar>
             </v-list-tile-avatar>
               <v-list-tile-content>
                 <v-list-tile-title>View project on GitHub</v-list-tile-title>
-                <v-list-tile-sub-title>github.com/alteryx-vue/nyt</v-list-tile-sub-title>
+                <v-list-tile-sub-title>github.com/alteryx-vue/nyt-connector</v-list-tile-sub-title>
               </v-list-tile-content>
           </v-list-tile>
 
@@ -62,7 +57,7 @@
           <v-list-tile>
             <v-list-tile-avatar>
               <v-avatar size="32px" tile>
-                <v-icon class="black--text">fa-github</v-icon>
+                <v-icon>fa-github</v-icon>
               </v-avatar>
             </v-list-tile-avatar>
               <v-list-tile-content>
@@ -90,10 +85,7 @@
       }
     },
     computed: {
-      icon() {
-        return this.$store.state.icon
-      },
-      title() {
+      appTitle() {
         return this.$store.state.title
       },
     }

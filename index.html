@@ -2,6 +2,12 @@
 <html lang="en">
   <head>
     <title>NYT</title>
+
+    <script type="text/javascript">
+        // Include version 2 of the base GUI library.
+        document.write(`<script src="${window.Alteryx.LibDir}2/lib/build/designerDesktop.bundle.js">\x3c/script>`)
+    </script>
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,6 +17,6 @@
   </head>
   <body>
     <div id="app"></div>
-    <script src="./dist/app.js"></script>
+    <script src="./build/app.bundle.js"></script>
   </body>
 </html>
