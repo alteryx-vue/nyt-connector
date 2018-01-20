@@ -45,7 +45,9 @@
   	name: 'nytSections',
     computed: {
       showAlert() {
-        if (this.$store.state.config.apiKey === this.$store.state.config.lastKey && this.$store.state.config.connectError > 0 ) {
+        if (this.$store.state.config.connected < 1) {
+          return true
+        } else if (this.$store.state.config.apiKey === this.$store.state.config.lastKey && this.$store.state.config.connectError > 0 ) {
           return true
         } else if (this.$store.state.config.apiKey !== this.$store.state.config.lastKey && this.$store.state.config.connects > 0) {
           return true
@@ -54,7 +56,9 @@
         }
       },
       alertType() {
-        if (this.$store.state.config.apiKey === this.$store.state.config.lastKey && this.$store.state.config.connectError > 0 ) {
+        if (this.$store.state.config.connected < 1) {
+          return 'info'
+        } else if (this.$store.state.config.apiKey === this.$store.state.config.lastKey && this.$store.state.config.connectError > 0 ) {
           return 'error'
         } else if (this.$store.state.config.apiKey !== this.$store.state.config.lastKey && this.$store.state.config.connects > 0) {
           return 'warning'
@@ -63,10 +67,13 @@
         }
       },
       alertText() {
-        const err = 'Please check your API key.  NYT provides free keys at https://developer.nytimes.com'
+
+        const alert = 'Currently disconnected, please check API key'
         const warn = 'New API key needs validation..'
         const runworthy = 'Connected'
-        if (this.$store.state.config.apiKey === this.$store.state.config.lastKey && this.$store.state.config.connectError > 0 ) {
+        if (this.$store.state.config.connected < 1) {
+          return alert
+        } else if (this.$store.state.config.apiKey === this.$store.state.config.lastKey && this.$store.state.config.connectError > 0 ) {
           return err
         } else if (this.$store.state.config.apiKey !== this.$store.state.config.lastKey && this.$store.state.config.connects > 0) {
           return warn

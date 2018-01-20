@@ -52,21 +52,6 @@
               </v-list-tile-content>
           </v-list-tile>
 
-          <v-subheader>Dependencies</v-subheader>
-
-          <v-list-tile>
-            <v-list-tile-avatar>
-              <v-avatar size="32px" tile>
-                <v-icon>fa-github</v-icon>
-              </v-avatar>
-            </v-list-tile-avatar>
-              <v-list-tile-content>
-                <v-list-tile-title>Axios</v-list-tile-title>
-                <v-list-tile-sub-title>Promise based HTTP client</v-list-tile-sub-title>
-                  <v-list-tile-sub-title>github.com/axios/axios</v-list-tile-sub-title>
-              </v-list-tile-content>
-          </v-list-tile>
-
         </v-list>
       </v-card>
     </v-bottom-sheet>

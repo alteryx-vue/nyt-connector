@@ -58,6 +58,8 @@
           return true
         } else if (this.$store.state.config.apiKey !== this.$store.state.config.lastKey && this.$store.state.config.connects > 0) {
           return true
+        } else if (this.$store.state.config.connects > 0) {
+          return true
         } else {
           return false
         }
