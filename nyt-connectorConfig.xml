@@ -25,7 +25,7 @@
           <RootToolName>New York Times</RootToolName>
           <ToolVersion>1</ToolVersion>
           <ToolInDb value="False" />
-          <CategoryName>Developer</CategoryName>
+          <CategoryName>Connectors</CategoryName>
           <SearchTags>nyt,vue,vuejs,vuetify</SearchTags>
           <Author>Taylor Cox</Author>
           <Company>github.com/alteryx-vue</Company>

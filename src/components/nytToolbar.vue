@@ -12,7 +12,7 @@
         <v-list two-line dark>
           <v-subheader>Development Sources</v-subheader>
 
-          <v-list-tile>
+          <v-list-tile href="https://github.com/alteryx-vue/nyt-connector" target="_blank">
             <v-list-tile-avatar>
               <v-avatar size="32px" tile>
                 <v-icon>fa-github</v-icon>
@@ -26,7 +26,7 @@
 
           <v-divider></v-divider>
 
-          <v-list-tile>
+          <v-list-tile href="https://vuejs.org" target="_blank">
             <v-list-tile-avatar>
               <v-avatar size="32px" tile>
                 <img src="public/vuejs.png">
@@ -40,7 +40,7 @@
 
           <v-divider></v-divider>
 
-          <v-list-tile>
+          <v-list-tile href="https://next.vuetifyjs.com" target="_blank">
             <v-list-tile-avatar>
               <v-avatar size="32px" tile>
                 <img src="public/vuetify.png">
@@ -49,6 +49,20 @@
               <v-list-tile-content>
                 <v-list-tile-title>Built using Vuetify</v-list-tile-title>
                 <v-list-tile-sub-title>Semantic Material Design Component Framework for Vue.js</v-list-tile-sub-title>
+              </v-list-tile-content>
+          </v-list-tile>
+
+        <v-divider></v-divider>
+        <v-subheader>API Keys are free!</v-subheader>
+
+          <v-list-tile href="https://developer.nytimes.com" target="_blank">
+            <v-list-tile-avatar>
+              <v-avatar size="32px" tile>
+                <img src="icon.png">
+              </v-avatar>
+            </v-list-tile-avatar>
+              <v-list-tile-content>
+                <v-list-tile-title>developer.nytimes.com</v-list-tile-title>
               </v-list-tile-content>
           </v-list-tile>
 

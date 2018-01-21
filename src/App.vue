@@ -13,7 +13,7 @@
         </v-container>
       </v-content>
 
-    <nyt-nav app></nyt-nav>
+    <!-- <nyt-nav app></nyt-nav> -->
     
   </v-app>
 

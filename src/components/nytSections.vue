@@ -2,7 +2,19 @@
 
 	<div>
 
-    <h3 class="mb-3">{{ pages[page].name }}</h3>
+    <h3 class="mb-3">{{ pages[page].name }}
+      <v-btn
+        small
+        flat
+        right
+        fixed
+        color="primary"
+        @click="goBack"
+        v-show="!showAlert">
+        <v-icon left>vpn_key</v-icon>
+        api key
+      </v-btn>
+    </h3>
 
     <div>
 
