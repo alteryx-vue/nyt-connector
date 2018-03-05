@@ -10,7 +10,7 @@ import App from './App.vue'
 Vue.use(Vuetify)
 Vue.use(Vuelidate)
 
-// free key for testing
+// test key
 // b49fd883e0e34eb88d5089930814e0be
 
 // render app
