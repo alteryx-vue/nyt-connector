@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+
+    <script>
+        // Include version 1 of the engine base library.
+        document.write('<link rel="import" href="' + window.Alteryx.LibDir + '1/lib/alteryx/engine/includes.html">');
+    </script>
+
+    <!-- Axios, a much better Promise based HTTP client for the browser and node.js -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <script>
+
+        const globes = {
+            baseUrl: '',
+            apiKey: '',
+            sections: []
+        }
+
+        Alteryx.Plugin.DefineConnections = function()
+        {
+            return {
+                IncomingConnections: [],
+                OutgoingConnections: [{
+                    name: "Articles"
+                }]
+            };
+        };
+
+        Alteryx.Plugin.PI_Init = function(config)
+        {
+
+            if (config.Configuration.connected > 0 && config.Configuration.apiKey == config.Configuration.lastKey){
+                Alteryx.Engine.SendMessage.Info('API Key valid, successful connection to ' + config.Configuration.baseUrl);
+                globes.baseUrl = config.Configuration.baseUrl;
+                globes.apiKey = config.Configuration.apiKey;
+                globes.sections = config.Configuration.selections;
+            } else {
+                Alteryx.Engine.SendMessage.Error('Connection to ' + config.Configuration.baseUrl + ' failed!  Please check your API Key..');
+            }
+
+        };
+
+        Alteryx.Plugin.II_Init = function(metaInfo){
+        };
+
+        Alteryx.Plugin.II_PushRecords = function(data){
+        };
+
+        Alteryx.Plugin.II_AllClosed = function()
+        {
+            Alteryx.Engine.SendMessage.CloseOutput(Alteryx.Plugin.DefineConnections().OutgoingConnections[0].name);
+            Alteryx.Engine.SendMessage.Complete();
+        };
+
+        Alteryx.Plugin.PI_PushAllRecords = function(recordLimit)
+        {
+
+            var fieldMap = [
+                {name:'api_section',type:'V_WString',size:500},
+                {name:'article_section',type:'V_WString',size:500},
+                {name:'article_subsection',type:'V_WString',size:1000},
+                {name:'title',type:'V_WString',size:1000},
+                {name:'abstract',type:'V_WString',size:1000},
+                {name:'url',type:'V_WString',size:1000},
+                {name:'short_url',type:'V_WString',size:1000},
+                {name:'byline',type:'V_WString',size:1000},
+                {name:'updated',type:'V_WString',size:1000},
+                {name:'created',type:'V_WString',size:1000},
+                {name:'published',type:'V_WString',size:1000},
+                {name:'image_url',type:'V_WString',size:1000},
+                {name:'image_caption',type:'V_WString',size:1000},
+                {name:'image_copyright',type:'V_WString',size:1000}
+            ];
+            Alteryx.Engine.SendMessage.RecordInfo("Articles", { "Field": fieldMap });
+
+                var promises = [];
+
+                globes.sections.forEach(function(s){
+                  getUrl = globes.baseUrl + '/svc/topstories/v2/' + s + '.json?api-key=' + globes.apiKey;
+                  promises.push(axios.get(getUrl))
+                });
+
+                var articles = [];
+
+                axios.all(promises).then(function(results) {
+                    results.forEach(function(response) {
+                        
+                        Alteryx.Engine.SendMessage.Info('Pulled ' + response.data.num_results + ' articles from the "' + response.data.section + '" section.');
+
+                        for (r = 0; r < response.data.results.length; r++) {
+                            if(response.data.results[r].multimedia[0]) {
+                                article = [
+                                    response.data.section,
+                                    response.data.results[r].section,
+                                    response.data.results[r].subsection,
+                                    response.data.results[r].title,
+                                    response.data.results[r].abstract,
+                                    response.data.results[r].url,
+                                    response.data.results[r].short_url,
+                                    response.data.results[r].byline,
+                                    response.data.results[r].updated_date,
+                                    response.data.results[r].created_date,
+                                    response.data.results[r].published_date,
+                                    response.data.results[r].multimedia[0].url,
+                                    response.data.results[r].multimedia[0].caption,
+                                    response.data.results[r].multimedia[0].copyright
+                                ];
+                            }else{
+                                article = [
+                                    response.data.section,
+                                    response.data.results[r].section,
+                                    response.data.results[r].subsection,
+                                    response.data.results[r].title,
+                                    response.data.results[r].abstract,
+                                    response.data.results[r].url,
+                                    response.data.results[r].short_url,
+                                    response.data.results[r].byline,
+                                    response.data.results[r].updated_date,
+                                    response.data.results[r].created_date,
+                                    response.data.results[r].published_date,
+                                    '-',
+                                    '-',
+                                    '-'
+                                ]; 
+                            }
+                            articles.push(article);
+                        }
+
+                    })
+                                     
+                    Alteryx.Engine.SendMessage.PushRecords("Articles", articles);
+                    Alteryx.Engine.SendMessage.Complete();
+                })
+                .catch(function (error) {
+                    Alteryx.Engine.SendMessage.Error('Uh oh! Error in API callback...');
+                    Alteryx.Engine.SendMessage.Error('This is usually the result of API call limits being exceeded (limits are 5 per second and/or 1000 per day)  Try reducing the number of selected sections in the UI.');
+                    Alteryx.Engine.SendMessage.Error('Error details are below.  For other errors, please submit an issue at https://github.com/alteryx-vue/nyt-connector/issues');
+                    Alteryx.Engine.SendMessage.Error('Error Message: ' + JSON.stringify(error.response.data.message));
+                    Alteryx.Engine.SendMessage.Error('Response Headers: ' + JSON.stringify(error.response.headers));
+                    Alteryx.Engine.SendMessage.Complete();
+                });
+             
+        };
+
+        Alteryx.Plugin.PI_Close = function()
+        {
+            Alteryx.Engine.SendMessage.PI_Close();
+        };
+
+    </script>
+</head>
+<body>
+</body>
+</html>

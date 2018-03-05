@@ -1,36 +1,13 @@
-<?xml version="1.0"?>
-
+<?xml version="1.0" encoding="UTF-8"?>
 <AlteryxJavaScriptPlugin>
-  <EngineSettings EngineDllEntryPoint="nyt\public\macros\engine.yxmc" EngineDll="Macro" SDKVersion="10.1" />
-
-  <!-- There are five valid settings for the Help attribute of the GuiSettings tag. -->
-  <!-- No Help attribute, or empty quotes, will take the user to the Alteryx web help index. This is the default behavior. -->
-  <!-- A valid HTTP URL including http:// or https:// protocol will open the default browser to that URL. -->
-  <!-- A filename of the form file://path/FileName.html will load the specified file from this plugin's directory. -->
-  <!-- A filename of the form file://C:/path/FileName.html will load the specified file from an absolute path. -->
-  <!-- An HTML filename without a preceding path or protocol indicator will load that HTML file in the Alteryx web help. -->
-  <GuiSettings Help="" Html="index.html" Icon="icon.png" SDKVersion="10.1">
-    <InputConnections>
-      <!-- <Connection Name="Input1" AllowMultiple="False" Optional="False" Type="Connection" Label="A"/> -->
-    </InputConnections>
-    <OutputConnections>
-      <Connection Name="Output" AllowMultiple="False" Optional="False" Type="Connection" Label=""/>
-    </OutputConnections>
-  </GuiSettings>
   <Properties>
-      <MetaInfo>
-          <NameIsFileName value="True" />
-          <Name>New York Times</Name>
-          <Description>A NYT HtmlPlugin built with Vue.js and Vuetify</Description>
-          <RootToolName>New York Times</RootToolName>
-          <ToolVersion>1</ToolVersion>
-          <ToolInDb value="False" />
-          <CategoryName>Developer</CategoryName>
-          <SearchTags>nyt,vue,vuejs,vuetify</SearchTags>
-          <Author>Taylor Cox</Author>
-          <Company>github.com/alteryx-vue</Company>
-          <Copyright></Copyright>
-          <DescriptionLink actual="" displayed="" />
-      </MetaInfo>
+    <MetaInfo>
+      <Name>New York Times</Name>
+      <Description>A NYT HtmlPlugin built with Vue.js and Vuetify</Description>
+      <ToolVersion>1</ToolVersion>
+      <CategoryName>Connectors</CategoryName>
+      <Author>Taylor Cox</Author>
+      <Icon>icon.png</Icon>
+    </MetaInfo>
   </Properties>
 </AlteryxJavaScriptPlugin>
