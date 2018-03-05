@@ -1,9 +1,11 @@
-# nyt (New York Times)
-### Alteryx NYT Connector built with Vue.js
+# New York Times Alteryx Connector
 
-> Alteryx HTML SDK template built with Vue.js and Vuetify
+> An Alteryx Connector built with Vue.js and Vuetify
 
-Alteryx NYT Connecter - bottom navigation w/ top toolbar for page/tab titles and developer options icon.
+This connector was developed using the increasingly popular Vue.js JavaScript framework alongside it's niche UI framework known as Vuetify - which was built specifically for Vue.js and features the Material Design guidelines.  
+
+The result is a beautiful, responsive, performant example of the first Alteryx tool developed using the progressive Vue.js library.  If you're familiar with React, then I almost insist that you give Vue.js a try.  Subjectively, I beleive Vue.js is the perfect lightweight framework for use with the Alteryx HTML/JavaScript SDK - especially when performance remains a top priority.  Throw in a lightweight UI and axios (a modern, promise-based HTTP client) and building beautiful, fast connectors in Alteryx is a breeze!
+
 
 ### Requirements
 - [NodeJS/npm](https://nodejs.org)
