@@ -2,9 +2,11 @@
 
 > An Alteryx Connector built with Vue.js and Vuetify
 
-This connector was developed using the increasingly popular Vue.js JavaScript framework alongside it's niche UI framework known as Vuetify - which was built specifically for Vue.js and features the Material Design guidelines.  
+This connector was developed using the increasingly popular [Vue.js](https://vuejs.org) Javascript framework alongside it's niche UI framework known as [Vuetify](https://vuetifyjs.com) - which was built specifically for Vue.js and follows the [Material Design](https://material.io/) guidelines.  
 
-The result is a beautiful, responsive, performant example of the first Alteryx tool developed using the progressive Vue.js library.  If you're familiar with React, then I almost insist that you give Vue.js a try.  Subjectively, I beleive Vue.js is the perfect lightweight framework for use with the Alteryx HTML/JavaScript SDK - especially when performance remains a top priority.  Throw in a lightweight UI and axios (a modern, promise-based HTTP client) and building beautiful, fast connectors in Alteryx is a breeze!
+The result is a beautiful, responsive, performant example of the first Alteryx tool developed using the progressive Vue.js library.  If you're familiar with React, then I might insist that you give Vue.js a try, it just might blow you away.  
+
+As an analyst with a passion for web developement, I genuinely beleive that Vue.js is the perfect lightweight JS framework for use with the Alteryx HTML/JavaScript SDK - especially when performance remains a top priority and your're interested in Get/Set Configuration only setup.  Vue.js also has excellenet state-management package integration, making data persistence completely painless.  Throw in a lightweight UI and axios (a modern, promise-based HTTP client) and building sleek, agile connectors in Alteryx is a breath of fresh air!
 
 
 ### Requirements
@@ -14,16 +16,18 @@ The result is a beautiful, responsive, performant example of the first Alteryx t
 ## Install/Download
 ---
 
-### clone to the Alteryx HTML plugins directory
+### clone to the system Alteryx/bin/HtmlPlugins directory or your {user}/AppData/Roaming/Alteryx/Tools directory
 
 ``` bash
 # typically the following location
 cd "c:/Program Files/Alteryx/bin/HtmlPlugins"
 
-# clone repo
+# or cd "c:/Users/{user}/AppData/Roaming/Alteryx/Tools" if you don't have admin rights to your machine
+
+# clone this repository
 git clone https://github.com/alteryx-vue/nyt-connector
 
-# change directory to project
+# cd to project
 cd nyt-connector
 ```
 
