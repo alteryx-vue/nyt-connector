@@ -16,13 +16,14 @@ As an analyst with a passion for web developement, I genuinely beleive that Vue.
 ## Install/Download
 ---
 
-### clone to the system Alteryx/bin/HtmlPlugins directory or your {user}/AppData/Roaming/Alteryx/Tools directory
+### clone to the system HtmlPlugins directory or your Roaming Tools directory..
 
 ``` bash
-# typically the following location
+# typically in this location - use this option if you have admin rights on your machine
 cd "c:/Program Files/Alteryx/bin/HtmlPlugins"
 
-# or cd "c:/Users/{user}/AppData/Roaming/Alteryx/Tools" if you don't have admin rights to your machine
+# or if you don't have admin rights...
+# cd "c:/Users/{user}/AppData/Roaming/Alteryx/Tools"
 
 # clone this repository
 git clone https://github.com/alteryx-vue/nyt-connector
