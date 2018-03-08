@@ -7,7 +7,7 @@ This connector was developed using the increasingly popular [Vue.js](https://vue
 
 The result is a beautiful, responsive, performant example of the first Alteryx tool developed using the progressive Vue.js library.
 
-Vue.js is the perfect lightweight JavaScript framework for use within the Alteryx HTML/JavaScript SDK - especially when performance is a  priority and you're interested in a simple GetConfiguration/SetConfiguration setup.  Vue.js also has excellenet state-management package integration, making data persistence completely painless.  Throw in a lightweight UI and [axios](https://github.com/axios/axios) (a modern, promise-based HTTP client) and building sleek, agile connectors in Alteryx is a cinch!
+Vue.js is the perfect lightweight JavaScript framework for use within the Alteryx HTML/JavaScript SDK - especially when performance is a  priority and you're interested in a simple GetConfiguration/SetConfiguration setup.  Vue.js also has excellenet state-management package integration, making data persistence completely painless.  Throw in a lightweight UI and [axios](https://github.com/axios/axios) (promise-based HTTP client) and building sleek, agile connectors in Alteryx is a cinch!
 
 
 ### Requirements
