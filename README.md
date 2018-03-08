@@ -1,4 +1,5 @@
-# New York Times Alteryx Connector ![logo](icon.png)
+![logo](public/banner.png | height=50)
+## Alteryx Connector
 
 [![Build Status](https://travis-ci.org/alteryx-vue/nyt-connector.svg?branch=master)](https://travis-ci.org/alteryx-vue/nyt-connector) [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat)](LICENSE)
 > An Alteryx Connector built with Vue.js and Vuetify
