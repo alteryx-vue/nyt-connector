@@ -5,7 +5,7 @@
     <MetaInfo>
       <NameIsFileName value="True" />
       <Name>New York Times</Name>
-      <Description>New York Times connector developed with Vue.js, Vuetify and the Alteryx HTML/Javascript SDK.  Select multiple sections of the NYT to pull articles from.</Description>
+      <Description>New York Times connector developed with Vue.js, Vuetify and the Alteryx HTML/JavaScript SDK.  Select multiple sections of the NYT to pull articles from.</Description>
       <RootToolName>New York Times</RootToolName>
       <ToolVersion>1</ToolVersion>
       <ToolInDb value="false" />
