@@ -1,12 +1,13 @@
-# New York Times Alteryx Connector
+# New York Times Alteryx Connector ![logo](icon.png)
 
+[![Build Status](https://travis-ci.org/alteryx-vue/nyt-connector.svg?branch=master)](https://travis-ci.org/alteryx-vue/nyt-connector) [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat)](LICENSE)
 > An Alteryx Connector built with Vue.js and Vuetify
 
-This connector was developed using the increasingly popular [Vue.js](https://vuejs.org) Javascript framework alongside it's niche UI framework known as [Vuetify](https://vuetifyjs.com) - which was built specifically for Vue.js and follows the [Material Design](https://material.io/) guidelines.  
+This connector was developed using the increasingly popular [Vue.js](https://vuejs.org) JavaScript framework alongside a UI framework known as [Vuetify](https://vuetifyjs.com) - which was built specifically for Vue.js and follows [Material Design](https://material.io/) guidelines.  
 
-The result is a beautiful, responsive, performant example of the first Alteryx tool developed using the progressive Vue.js library.  If you're familiar with React, then I might insist that you give Vue.js a try, it just might blow you away.  
+The result is a beautiful, responsive, performant example of the first Alteryx tool developed using the progressive Vue.js library.
 
-As an analyst with a passion for web developement, I genuinely beleive that Vue.js is the perfect lightweight JS framework for use with the Alteryx HTML/JavaScript SDK - especially when performance remains a top priority and your're interested in Get/Set Configuration only setup.  Vue.js also has excellenet state-management package integration, making data persistence completely painless.  Throw in a lightweight UI and axios (a modern, promise-based HTTP client) and building sleek, agile connectors in Alteryx is a breath of fresh air!
+Vue.js is the perfect lightweight JavaScript framework for use within the Alteryx HTML/JavaScript SDK - especially when performance is a  priority and you're interested in a simple GetConfiguration/SetConfiguration setup.  Vue.js also has excellenet state-management package integration, making data persistence completely painless.  Throw in a lightweight UI and [axios](https://github.com/axios/axios) (a modern, promise-based HTTP client) and building sleek, agile connectors in Alteryx is a cinch!
 
 
 ### Requirements
@@ -14,7 +15,6 @@ As an analyst with a passion for web developement, I genuinely beleive that Vue.
 
 
 ## Install/Download
----
 
 ### clone to the system HtmlPlugins directory or your Roaming Tools directory..
 
@@ -33,7 +33,6 @@ cd nyt-connector
 ```
 
 ## Build Setup & Testing
----
 
 ### install dependencies
 
