@@ -10,9 +10,6 @@ import App from './App.vue'
 Vue.use(Vuetify)
 Vue.use(Vuelidate)
 
-// test key
-// b49fd883e0e34eb88d5089930814e0be
-
 // render app
 const app = new Vue({
   el: '#app',

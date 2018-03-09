@@ -58,23 +58,28 @@
         Alteryx.Plugin.PI_PushAllRecords = function(recordLimit)
         {
 
-            var fieldMap = [
-                {name:'api_section',type:'V_WString',size:500},
-                {name:'article_section',type:'V_WString',size:500},
-                {name:'article_subsection',type:'V_WString',size:1000},
-                {name:'title',type:'V_WString',size:1000},
-                {name:'abstract',type:'V_WString',size:1000},
-                {name:'url',type:'V_WString',size:1000},
-                {name:'short_url',type:'V_WString',size:1000},
-                {name:'byline',type:'V_WString',size:1000},
-                {name:'updated',type:'V_WString',size:1000},
-                {name:'created',type:'V_WString',size:1000},
-                {name:'published',type:'V_WString',size:1000},
-                {name:'image_url',type:'V_WString',size:1000},
-                {name:'image_caption',type:'V_WString',size:1000},
-                {name:'image_copyright',type:'V_WString',size:1000}
-            ];
-            Alteryx.Engine.SendMessage.RecordInfo("Articles", { "Field": fieldMap });
+            if(recordLimit.RecordLimit > 0){
+
+                // go time, make some API calls
+
+                var fieldMap = [
+                    {name:'api_section',type:'V_WString',size:500},
+                    {name:'article_section',type:'V_WString',size:500},
+                    {name:'article_subsection',type:'V_WString',size:1000},
+                    {name:'title',type:'V_WString',size:1000},
+                    {name:'abstract',type:'V_WString',size:1000},
+                    {name:'url',type:'V_WString',size:1000},
+                    {name:'short_url',type:'V_WString',size:1000},
+                    {name:'byline',type:'V_WString',size:1000},
+                    {name:'updated',type:'V_WString',size:1000},
+                    {name:'created',type:'V_WString',size:1000},
+                    {name:'published',type:'V_WString',size:1000},
+                    {name:'image_url',type:'V_WString',size:1000},
+                    {name:'image_caption',type:'V_WString',size:1000},
+                    {name:'image_copyright',type:'V_WString',size:1000}
+                ];
+                
+                Alteryx.Engine.SendMessage.RecordInfo("Articles", { "Field": fieldMap });
 
                 var promises = [];
 
@@ -142,7 +147,31 @@
                     Alteryx.Engine.SendMessage.Error('Response Headers: ' + JSON.stringify(error.response.headers));
                     Alteryx.Engine.SendMessage.Complete();
                 });
-             
+
+            } else {
+
+                // just push the field map
+                var fieldMap = [
+                    {name:'api_section',type:'V_WString',size:500},
+                    {name:'article_section',type:'V_WString',size:500},
+                    {name:'article_subsection',type:'V_WString',size:1000},
+                    {name:'title',type:'V_WString',size:1000},
+                    {name:'abstract',type:'V_WString',size:1000},
+                    {name:'url',type:'V_WString',size:1000},
+                    {name:'short_url',type:'V_WString',size:1000},
+                    {name:'byline',type:'V_WString',size:1000},
+                    {name:'updated',type:'V_WString',size:1000},
+                    {name:'created',type:'V_WString',size:1000},
+                    {name:'published',type:'V_WString',size:1000},
+                    {name:'image_url',type:'V_WString',size:1000},
+                    {name:'image_caption',type:'V_WString',size:1000},
+                    {name:'image_copyright',type:'V_WString',size:1000}
+                ];
+                
+                Alteryx.Engine.SendMessage.RecordInfo("Articles", { "Field": fieldMap });
+                Alteryx.Engine.SendMessage.Complete();
+                
+            }
         };
 
         Alteryx.Plugin.PI_Close = function()
