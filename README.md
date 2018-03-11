@@ -7,7 +7,7 @@ This connector was developed using the increasingly popular [Vue.js](https://vue
 
 The result is a beautiful, responsive, performant example of the first Alteryx tool developed using the progressive Vue.js library.
 
-Vue.js is the perfect lightweight JavaScript framework for use within the Alteryx HTML/JavaScript SDK - especially when performance is a  priority and you're interested in a simple GetConfiguration/SetConfiguration setup.  Vue.js also has excellenet state-management package integration, making data persistence completely painless.  Throw in a lightweight UI and [axios](https://github.com/axios/axios) (promise-based HTTP client) and building sleek, agile connectors in Alteryx is a cinch!
+Vue.js is the perfect lightweight JavaScript framework for use within the Alteryx HTML/JavaScript SDK - especially when performance is a  priority and you're interested in a simple GetConfiguration/SetConfiguration setup.  Vue.js also has excellent state-management package integration, making data persistence completely painless.  Throw in a lightweight UI and [axios](https://github.com/axios/axios) (promise-based HTTP client) and building sleek, agile connectors in Alteryx is a cinch!
 
 
 ### Requirements
@@ -16,7 +16,7 @@ Vue.js is the perfect lightweight JavaScript framework for use within the Altery
 
 ## Install/Download
 
-A compiled build you can be installed with the [.YXI installer here](https://github.com/alteryx-vue/installers/raw/master/nyt-connector.yxi).  Use the instructions below for installing from source.
+A compiled build you can be installed with the [.YXI installer here](https://github.com/alteryx-vue/installers/raw/master/nyt-connector.yxi) or by downloading from the [Alteryx Gallery](https://gallery.alteryx.com/#!app/New-York-Times/5aa5908a0462d716e8cb1e63).  Use the instructions below for installing from source.
 
 ### clone to the system HtmlPlugins directory or your Roaming Tools directory..
 
