@@ -16,6 +16,8 @@ Vue.js is the perfect lightweight JavaScript framework for use within the Altery
 
 ## Install/Download
 
+A compiled build you can be installed with the [.YXI installer here](https://github.com/alteryx-vue/installers/raw/master/nyt-connector.yxi).  Use the instructions below for installing from source.
+
 ### clone to the system HtmlPlugins directory or your Roaming Tools directory..
 
 ``` bash
