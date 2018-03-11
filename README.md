@@ -40,21 +40,10 @@ cd nyt-connector
 
 `npm install`
 
-Default production dependencies:
-
-``` bash
-  "dependencies": {
-    "axios": "^0.17.1",
-    "vue": "^2.5.3",
-    "vuelidate": "^0.6.1",
-    "vuetify": "^0.17.4",
-    "vuex": "^3.0.1"
-  }
-```
-
 ### Dev Environment Testing
 
-You can use `npm run dev` to serve the project with hot reload for testing in a browser.
+You can use `npm run dev` to serve the project with hot reload for testing in a browser.  
+>limited functionality in browser - use for Vue component and/or state management debugging, etc.
 
 __Note__: When using Chrome, be sure to make use of the [Vue.js Devtools Extension](https://chrome.google.com/webstore/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
 
