@@ -2,7 +2,7 @@
   "name": "nyt-connector",
   "description": "An Alteryx NYT input connector built with Vue.js and Vuetify",
   "version": "1.0.0",
-  "author": "Taylor Cox <coxta45@gmail.com>",
+  "author": "Taylor Cox",
   "private": true,
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dev-server --open --inline --hot",
