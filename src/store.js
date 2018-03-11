@@ -40,41 +40,43 @@ export const store = new Vuex.Store({
 				{ name: 'Obituaries', key: 'obituaries'},
 				{ name: 'Insider', key: 'insider'}
 			],
-			selections: ['home','world','national','technology'],
+			url: 'https://api.nytimes.com/svc/topstories/v2/home.json'
+		},
+		ui: {
 			baseUrl: 'https://api.nytimes.com',
-			url: 'https://api.nytimes.com/svc/topstories/v2/home.json',
+			selections: ['home','world','national','technology'],
 			apiKey: '',
 			lastKey: '',
 			connected: 0,
 			connects: 0,
 			connectError: 0,
-			apiError: '',
+			apiError: ''
 		}
 	},
 	mutations: {
 	  updateKey (state, v) {
-	    state.config.apiKey = v
+	    state.ui.apiKey = v
 	  },
 	  updateConnected (state, v) {
-	    state.config.connected = v
+	    state.ui.connected = v
 	  },
 	  updateConnectError (state, v) {
-	  	state.config.connectError = v
+	  	state.ui.connectError = v
 	  },
 	  updateApiError (state, v) {
-	  	state.config.apiError = v
+	  	state.ui.apiError = v
 	  },
 	  updateSelections (state, v) {
-	    state.config.selections = v
+	    state.ui.selections = v
 	  },
 	  updatePage (state, v) {
 	  	state.config.page = v
 	  },
 	  updateConnects (state) {
-	  	state.config.connects ++
+	  	state.ui.connects ++
 	  },
 	  updateLastKey (state) {
-	  	state.config.lastKey = state.config.apiKey
+	  	state.ui.lastKey = state.ui.apiKey
 	  }
 	}
 })

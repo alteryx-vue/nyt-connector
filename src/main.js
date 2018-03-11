@@ -22,7 +22,7 @@ window.Alteryx.Gui = {
 	SetConfiguration: j => {
 
 		// update Vuex store with Alteryx Designer XML config, if exists
-		store.state.config = j.Configuration.Configuration ? j.Configuration.Configuration : store.state.config
+		store.state.ui = j.Configuration.Configuration ? j.Configuration.Configuration : store.state.ui
 		window.Alteryx.JsEvent(JSON.stringify({Event: 'SetConfiguration'}))
 
 	},
@@ -32,7 +32,7 @@ window.Alteryx.Gui = {
 		window.Alteryx.JsEvent(JSON.stringify({
 			Event: 'GetConfiguration',
 			Configuration: {
-				Configuration: store.state.config,
+				Configuration: store.state.ui,
 				Annotation: store.state.config.appTitle
 			}
 		}))

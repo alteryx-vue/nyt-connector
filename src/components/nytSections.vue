@@ -57,22 +57,22 @@
   	name: 'nytSections',
     computed: {
       showAlert() {
-        if (this.$store.state.config.connected < 1) {
+        if (this.$store.state.ui.connected < 1) {
           return true
-        } else if (this.$store.state.config.apiKey === this.$store.state.config.lastKey && this.$store.state.config.connectError > 0 ) {
+        } else if (this.$store.state.ui.apiKey === this.$store.state.ui.lastKey && this.$store.state.ui.connectError > 0 ) {
           return true
-        } else if (this.$store.state.config.apiKey !== this.$store.state.config.lastKey && this.$store.state.config.connects > 0) {
+        } else if (this.$store.state.ui.apiKey !== this.$store.state.ui.lastKey && this.$store.state.ui.connects > 0) {
           return true
         } else {
           return false
         }
       },
       alertType() {
-        if (this.$store.state.config.connected < 1) {
+        if (this.$store.state.ui.connected < 1) {
           return 'info'
-        } else if (this.$store.state.config.apiKey === this.$store.state.config.lastKey && this.$store.state.config.connectError > 0 ) {
+        } else if (this.$store.state.ui.apiKey === this.$store.state.ui.lastKey && this.$store.state.ui.connectError > 0 ) {
           return 'error'
-        } else if (this.$store.state.config.apiKey !== this.$store.state.config.lastKey && this.$store.state.config.connects > 0) {
+        } else if (this.$store.state.ui.apiKey !== this.$store.state.ui.lastKey && this.$store.state.ui.connects > 0) {
           return 'warning'
         } else {
           return 'success'
@@ -83,11 +83,11 @@
         const alert = 'Currently disconnected, please check API key'
         const warn = 'New API key needs validation..'
         const runworthy = 'Connected'
-        if (this.$store.state.config.connected < 1) {
+        if (this.$store.state.ui.connected < 1) {
           return alert
-        } else if (this.$store.state.config.apiKey === this.$store.state.config.lastKey && this.$store.state.config.connectError > 0 ) {
+        } else if (this.$store.state.ui.apiKey === this.$store.state.ui.lastKey && this.$store.state.ui.connectError > 0 ) {
           return err
-        } else if (this.$store.state.config.apiKey !== this.$store.state.config.lastKey && this.$store.state.config.connects > 0) {
+        } else if (this.$store.state.ui.apiKey !== this.$store.state.ui.lastKey && this.$store.state.ui.connects > 0) {
           return warn
         } else {
           return runworthy
@@ -104,7 +104,7 @@
       },
       selections: {
         get () {
-          return this.$store.state.config.selections
+          return this.$store.state.ui.selections
         },
         set (value) {
           this.$store.commit('updateSelections', value)

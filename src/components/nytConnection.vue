@@ -54,20 +54,20 @@
     },
     computed: {
       showAlert() {
-        if (this.$store.state.config.apiKey === this.$store.state.config.lastKey && this.$store.state.config.connectError > 0 ) {
+        if (this.$store.state.ui.apiKey === this.$store.state.ui.lastKey && this.$store.state.ui.connectError > 0 ) {
           return true
-        } else if (this.$store.state.config.apiKey !== this.$store.state.config.lastKey && this.$store.state.config.connects > 0) {
+        } else if (this.$store.state.ui.apiKey !== this.$store.state.ui.lastKey && this.$store.state.ui.connects > 0) {
           return true
-        } else if (this.$store.state.config.connects > 0) {
+        } else if (this.$store.state.ui.connects > 0) {
           return true
         } else {
           return false
         }
       },
       alertType() {
-        if (this.$store.state.config.apiKey === this.$store.state.config.lastKey && this.$store.state.config.connectError > 0 ) {
+        if (this.$store.state.ui.apiKey === this.$store.state.ui.lastKey && this.$store.state.ui.connectError > 0 ) {
           return 'error'
-        } else if (this.$store.state.config.apiKey !== this.$store.state.config.lastKey && this.$store.state.config.connects > 0) {
+        } else if (this.$store.state.ui.apiKey !== this.$store.state.ui.lastKey && this.$store.state.ui.connects > 0) {
           return 'warning'
         } else {
           return 'success'
@@ -77,19 +77,19 @@
         const err = 'Please check your API key.  NYT provides free keys at https://developer.nytimes.com'
         const warn = 'New API key needs validation..'
         const runworthy = 'Connected'
-        if (this.$store.state.config.apiKey === this.$store.state.config.lastKey && this.$store.state.config.connectError > 0 ) {
+        if (this.$store.state.ui.apiKey === this.$store.state.ui.lastKey && this.$store.state.ui.connectError > 0 ) {
           return err
-        } else if (this.$store.state.config.apiKey !== this.$store.state.config.lastKey && this.$store.state.config.connects > 0) {
+        } else if (this.$store.state.ui.apiKey !== this.$store.state.ui.lastKey && this.$store.state.ui.connects > 0) {
           return warn
         } else {
           return runworthy
         }
       },
       checkable() {
-        return this.$store.state.config.apiKey.length > 0
+        return this.$store.state.ui.apiKey.length > 0
       },
       canMoveOn() {
-        return this.$store.state.config.apiKey === this.$store.state.config.lastKey && this.$store.state.config.connected > 0
+        return this.$store.state.ui.apiKey === this.$store.state.ui.lastKey && this.$store.state.ui.connected > 0
       },
       page() {
         return this.$store.state.config.page
@@ -99,7 +99,7 @@
       },
       apiKey: {
         get () {
-          return this.$store.state.config.apiKey
+          return this.$store.state.ui.apiKey
         },
         set (value) {
           this.$store.commit('updateKey', value)
@@ -119,7 +119,7 @@
         this.loading = true
 
         // GET Top Stories to check API Key
-        axios.get(this.$store.state.config.url  + "?api-key=" + this.$store.state.config.apiKey)
+        axios.get(this.$store.state.config.url  + "?api-key=" + this.$store.state.ui.apiKey)
         .then(response => {
                             this.$store.commit('updateConnected',1)
                             this.$store.commit('updateConnectError',0)
