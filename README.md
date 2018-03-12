@@ -9,6 +9,7 @@ The result is a beautiful, responsive, performant example of the first Alteryx t
 
 Vue.js is the perfect lightweight JavaScript framework for use within the Alteryx HTML/JavaScript SDK - especially when performance is a  priority and you're interested in a simple GetConfiguration/SetConfiguration setup.  Vue.js also has excellent state-management package integration, making data persistence completely painless.  Throw in a lightweight UI and [axios](https://github.com/axios/axios) (promise-based HTTP client) and building sleek, agile connectors in Alteryx is a cinch!
 
+![NYT Connector](https://github.com/coxta/embed-content/raw/master/nyt-connector.gif)
 
 ### Requirements
 - [NodeJS/npm](https://nodejs.org)
