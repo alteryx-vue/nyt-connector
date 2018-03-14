@@ -1,6 +1,6 @@
 <img src='./public/banner.png' height='48'>
 
-[![Build Status](https://travis-ci.org/alteryx-vue/nyt-connector.svg?branch=master)](https://travis-ci.org/alteryx-vue/nyt-connector) [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat)](LICENSE)
+[![GitHub release](https://img.shields.io/github/release/alteryx-vue/nyt-connector.svg)](https://github.com/alteryx-vue/nyt-connector) [![Build Status](https://travis-ci.org/alteryx-vue/nyt-connector.svg?branch=master)](https://travis-ci.org/alteryx-vue/nyt-connector) [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat)](LICENSE)
 > An Alteryx Connector built with Vue.js and Vuetify
 
 This connector was developed using the increasingly popular [Vue.js](https://vuejs.org) JavaScript framework alongside a UI framework known as [Vuetify](https://vuetifyjs.com) - which was built specifically for Vue.js and follows [Material Design](https://material.io/) guidelines.  
