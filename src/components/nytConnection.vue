@@ -141,13 +141,7 @@
       },
       moveOn() {
         this.$store.commit('updatePage', 1)
-      },
-      updateUrl (e) {
-        this.$store.commit('updateUrl', e.target.value)
-      },
-      updateKey (e) {
-        this.$store.commit('updateKey', e.target.value)
-      },
+      }
     },
   }
 </script>

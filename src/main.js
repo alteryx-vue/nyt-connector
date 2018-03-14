@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Vuelidate from 'vuelidate'
 import Vuetify from 'vuetify'
-import 'vuetify/dist/vuetify.css'
+import 'vuetify/dist/vuetify.min.css'
 
 import axios from 'axios'
 import {store} from './store.js'

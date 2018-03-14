@@ -7,13 +7,11 @@
       <v-content>
         <v-container>
 
-          <nyt-connection v-show="page == 0"></nyt-connection>
-          <nyt-sections v-show="page == 1"></nyt-sections>
+          <nyt-connection v-if="page == 0"></nyt-connection>
+          <nyt-sections v-if="page == 1"></nyt-sections>
 
         </v-container>
       </v-content>
-
-    <!-- <nyt-nav app></nyt-nav> -->
     
   </v-app>
 
@@ -24,14 +22,12 @@
   import nytToolbar from './components/nytToolbar.vue';
   import nytConnection from './components/nytConnection.vue';
   import nytSections from './components/nytSections.vue';
-  import nytNav from './components/nytNav.vue';
 
   export default {
     components: {
         nytToolbar,
         nytConnection,
-        nytSections,
-        nytNav
+        nytSections
     },
     computed: {
       page() {
