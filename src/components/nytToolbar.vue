@@ -6,7 +6,7 @@
 
     <v-bottom-sheet>
       <v-btn icon class="grey--text text--darken-1" slot="activator">
-        <v-icon>fa-code</v-icon>
+        <v-icon>code</v-icon>
       </v-btn>
       <v-card tile>
         <v-list two-line dark>
@@ -15,7 +15,7 @@
           <v-list-tile href="https://github.com/alteryx-vue/nyt-connector" target="_blank">
             <v-list-tile-avatar>
               <v-avatar size="32px" tile>
-                <v-icon>fa-github</v-icon>
+                <v-icon>code</v-icon>
               </v-avatar>
             </v-list-tile-avatar>
               <v-list-tile-content>
