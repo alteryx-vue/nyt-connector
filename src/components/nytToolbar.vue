@@ -17,7 +17,7 @@
     </v-tooltip>
 
     <v-bottom-sheet>
-
+    
       <v-btn icon slot="activator">
           <v-icon medium>code</v-icon>
       </v-btn>
