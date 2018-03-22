@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "axios": "^0.17.1",
-    "npm": "^5.7.0",
+    "npm": "^5.7.1",
     "vue": "^2.5.3",
     "vue-markdown": "^2.2.4",
     "vuelidate": "^0.6.1",
