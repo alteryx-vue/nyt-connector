@@ -8,10 +8,13 @@ export const store = new Vuex.Store({
 		config: {
 			appTitle: 'New York Times',
 			appVersion: 'v1.0.1',
-			releasesUrl: 'https://api.github.com/repos/alteryx-vue/nyt-connector/releases',
+			latestUrl: 'https://api.github.com/repos/alteryx-vue/nyt-connector/releases/latest',
 			updateAvail: false,
+			updatePrompt: false,
+			moreInfo: false,
 			updateVersion: 'v0.0.0',
-			updateUrl: 'https://raw.githubusercontent.com/alteryx-vue/installers/master/nyt-connector.yxi',
+			updateNotes: 'New realease',
+			updateUrl: 'https://github.com/alteryx-vue/installers/raw/master/nyt-connector.yxi',
 			icon: 'icon.png',
 			page: 0,
 			pages: [
@@ -85,7 +88,10 @@ export const store = new Vuex.Store({
 	  	state.ui.lastKey = state.ui.apiKey
 	  },
 	  dismissUpdate (state) {
-	  	state.config.updateAvail = false
+	  	state.config.updatePrompt = false
+	  },
+	  updateMoreInfo (state, v) {
+	  	state.config.moreInfo = v
 	  }
 	}
 })

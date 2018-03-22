@@ -9,13 +9,16 @@ import App from './App.vue'
 Vue.use(Vuetify)
 Vue.use(Vuelidate)
 
-// GET release information to use for update check
-axios.get(store.state.config.releasesUrl)
+// GET latest release info for update check
+axios.get(store.state.config.latestUrl)
 .then(response => { 
-					const avail = response.data[0].name
+					const avail = response.data.name
+					const notes = response.data.body
 					const current = store.state.config.appVersion
 					store.state.config.updateAvail = (avail.length > 0 && avail !== current) ? true : false
+					store.state.config.updatePrompt = store.state.config.updateAvail
 					store.state.config.updateVersion = avail
+					store.state.config.updateNotes = notes
 				  }
 )
 .catch(response => { /* release call failed, just proceed */ }

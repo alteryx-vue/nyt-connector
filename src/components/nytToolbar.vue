@@ -4,10 +4,24 @@
     <img src="public/banner.png" :alt="appTitle" height="24">
     <v-spacer></v-spacer>
 
-    <v-bottom-sheet>
-      <v-btn icon class="grey--text text--darken-1" slot="activator">
-        <v-icon medium>code</v-icon>
+    <v-tooltip left>
+      <v-btn 
+        icon 
+        class="blue--text text--darken-1" 
+        :disabled="!updateAvail" 
+        slot="activator"
+        @click.native="showInfo">
+        <v-icon>cloud_download</v-icon>
       </v-btn>
+      <span>{{ updateBlurb }}</span>
+    </v-tooltip>
+
+    <v-bottom-sheet>
+
+      <v-btn icon slot="activator">
+          <v-icon medium>code</v-icon>
+      </v-btn>
+
       <v-card tile>
         <v-list two-line dark>
           <v-subheader>Development Sources</v-subheader>
@@ -88,6 +102,34 @@
       appTitle() {
         return this.$store.state.config.title
       },
+      updateAvail: {
+        get () {
+          return this.$store.state.config.updateAvail
+        },
+        set (value) {
+          this.$store.commit('dismissUpdate')
+        }
+      },
+      moreInfo: {
+        get () {
+          return this.$store.state.config.moreInfo
+        },
+        set (value) {
+          this.$store.commit('updateMoreInfo', value)
+        }
+      },
+      updateBlurb() {
+        if (this.$store.state.config.updateAvail) {
+          return 'Update available!'
+        } else {
+          return 'No updates available'
+        }
+      }
+    },
+    methods: {
+      showInfo() {
+        this.moreInfo = true
+      }
     }
   }
 </script>
