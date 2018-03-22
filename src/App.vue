@@ -9,6 +9,8 @@
 
           <nyt-connection v-if="page == 0"></nyt-connection>
           <nyt-sections v-if="page == 1"></nyt-sections>
+          
+          <nyt-update></nyt-update>
 
         </v-container>
       </v-content>
@@ -22,12 +24,14 @@
   import nytToolbar from './components/nytToolbar.vue';
   import nytConnection from './components/nytConnection.vue';
   import nytSections from './components/nytSections.vue';
+  import nytUpdate from './components/nytUpdate.vue';
 
   export default {
     components: {
         nytToolbar,
         nytConnection,
-        nytSections
+        nytSections,
+        nytUpdate
     },
     computed: {
       page() {

@@ -37,7 +37,7 @@ module.exports = {
         }
       },
       {
-        test: /\.(png|jpg|gif|svg)$/,
+        test: /\.(png|jpg|gif|svg|ttf|otf|eot|woff(2)?)$/,
         loader: 'file-loader',
         options: {
           objectAssign: 'Object.assign'
