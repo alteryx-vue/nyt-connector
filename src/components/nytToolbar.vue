@@ -6,7 +6,7 @@
 
     <v-bottom-sheet>
       <v-btn icon class="grey--text text--darken-1" slot="activator">
-        <v-icon>fa-code</v-icon>
+        <v-icon medium>code</v-icon>
       </v-btn>
       <v-card tile>
         <v-list two-line dark>
@@ -15,7 +15,7 @@
           <v-list-tile href="https://github.com/alteryx-vue/nyt-connector" target="_blank">
             <v-list-tile-avatar>
               <v-avatar size="32px" tile>
-                <v-icon>fa-github</v-icon>
+                <v-icon>code</v-icon>
               </v-avatar>
             </v-list-tile-avatar>
               <v-list-tile-content>
@@ -63,6 +63,7 @@
             </v-list-tile-avatar>
               <v-list-tile-content>
                 <v-list-tile-title>developer.nytimes.com</v-list-tile-title>
+                <v-list-tile-sub-title>API Key obtained with a valid email address</v-list-tile-sub-title>
               </v-list-tile-content>
           </v-list-tile>
 

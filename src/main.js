@@ -2,13 +2,24 @@ import Vue from 'vue'
 import Vuelidate from 'vuelidate'
 import Vuetify from 'vuetify'
 import 'vuetify/dist/vuetify.min.css'
-
 import axios from 'axios'
 import {store} from './store.js'
 import App from './App.vue'
 
 Vue.use(Vuetify)
 Vue.use(Vuelidate)
+
+// GET release information to use for update check
+axios.get(store.state.config.releasesUrl)
+.then(response => { 
+					const avail = response.data[0].name
+					const current = store.state.config.appVersion
+					store.state.config.updateAvail = (avail.length > 0 && avail !== current) ? true : false
+					store.state.config.updateVersion = avail
+				  }
+)
+.catch(response => { /* release call failed, just proceed */ }
+)
 
 // render app
 const app = new Vue({
