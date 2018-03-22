@@ -7,7 +7,7 @@ export const store = new Vuex.Store({
 	state: {
 		config: {
 			appTitle: 'New York Times',
-			appVersion: 'v0.0.9',
+			appVersion: 'v1.0.1',
 			releasesUrl: 'https://api.github.com/repos/alteryx-vue/nyt-connector/releases',
 			updateAvail: false,
 			updateVersion: 'v0.0.0',
