@@ -11,7 +11,7 @@
         :disabled="!updateAvail" 
         slot="activator"
         @click.native="showInfo">
-        <v-icon>cloud_download</v-icon>
+        <v-icon>system_update</v-icon>
       </v-btn>
       <span>{{ updateBlurb }}</span>
     </v-tooltip>
@@ -19,17 +19,17 @@
     <v-bottom-sheet>
     
       <v-btn icon slot="activator">
-          <v-icon medium>code</v-icon>
+          <v-icon medium>info_outline</v-icon>
       </v-btn>
 
       <v-card tile>
         <v-list two-line dark>
-          <v-subheader>Development Sources</v-subheader>
+          <v-subheader>Version:<span class="ml-2 blue--text text--lighten-2">{{ curVersion }}</span></v-subheader>
 
           <v-list-tile href="https://github.com/alteryx-vue/nyt-connector" target="_blank">
             <v-list-tile-avatar>
               <v-avatar size="32px" tile>
-                <v-icon>code</v-icon>
+                <img src="public/github.png">
               </v-avatar>
             </v-list-tile-avatar>
               <v-list-tile-content>
@@ -117,6 +117,9 @@
         set (value) {
           this.$store.commit('updateMoreInfo', value)
         }
+      },
+      curVersion() {
+          return this.$store.state.config.appVersion
       },
       updateBlurb() {
         if (this.$store.state.config.updateAvail) {
