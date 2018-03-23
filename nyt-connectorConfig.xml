@@ -7,7 +7,7 @@
       <Name>New York Times</Name>
       <Description>New York Times connector developed with Vue.js, Vuetify and the Alteryx HTML/JavaScript SDK.  Select multiple sections of the NYT to pull articles from.</Description>
       <RootToolName>New York Times</RootToolName>
-      <ToolVersion>v1.1.1</ToolVersion>
+      <ToolVersion>v1.1.2</ToolVersion>
       <ToolInDb value="false" />
       <CategoryName>Connectors</CategoryName>
       <SearchTags>nyt,vue,vuejs,vuetify</SearchTags>
