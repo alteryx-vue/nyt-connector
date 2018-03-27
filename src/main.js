@@ -40,6 +40,9 @@ window.Alteryx.Gui = {
 	},
 	GetConfiguration: () => {
 
+		// set the loaded version so we'll be able to notify if update loaded
+		store.state.ui.version = store.state.config.appVersion
+
 		// give Vuex store to the Alteryx Designer XML config
 		window.Alteryx.JsEvent(JSON.stringify({
 			Event: 'GetConfiguration',

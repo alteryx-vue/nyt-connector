@@ -7,7 +7,7 @@ export const store = new Vuex.Store({
 	state: {
 		config: {
 			appTitle: 'New York Times',
-			appVersion: 'v1.1.1',
+			appVersion: 'v1.1.2',
 			latestUrl: 'https://api.github.com/repos/alteryx-vue/nyt-connector/releases/latest',
 			updateAvail: false,
 			updatePrompt: false,
@@ -58,6 +58,7 @@ export const store = new Vuex.Store({
 			connects: 0,
 			connectError: 0,
 			apiError: '',
+			version: '',
 			stopCheck: false
 		}
 	},
@@ -91,6 +92,9 @@ export const store = new Vuex.Store({
 	  },
 	  updateMoreInfo (state, v) {
 	  	state.config.moreInfo = v
+	  },
+	  updateVersion (state) {
+	  	state.ui.version = state.config.appVersion
 	  }
 	}
 })
