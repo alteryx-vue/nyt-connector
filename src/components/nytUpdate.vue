@@ -55,7 +55,7 @@
         </v-dialog>
 
         <!-- notify if just updated -->
-        <v-dialog v-model="updateSuccess" persistent max-width="290">
+        <v-dialog v-model="updated" persistent max-width="290">
           <v-card>
             <v-card-title class="headline">Tool Updated</v-card-title>
             <v-card-text>Successfully updated to {{ curVersion }}</v-card-text>
@@ -105,8 +105,9 @@
           this.$store.commit('updateVersion')
         }
       },
-      updateSuccess() {
-        return this.$store.state.ui.version != this.$store.state.config.appVersion
+      updated() {
+        // return this.$store.state.ui.version != this.$store.state.config.appVersion
+        return (this.$store.state.ui.version.length > 0 && this.$store.state.ui.version != this.$store.state.config.appVersion);
       },
       curVersion() {
         return this.$store.state.config.appVersion
