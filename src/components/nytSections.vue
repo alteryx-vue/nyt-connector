@@ -26,6 +26,7 @@
           v-model="selections" 
           :value="section.key" 
           :key="section.key" 
+          @change="updateSelections()"
           color="grey darken-4"
           hide-details
           class="mb-1">
@@ -55,6 +56,14 @@
 <script>
   export default {
   	name: 'nytSections',
+    data() {
+      return {
+        selections: this.$store.state.ui.selections,
+        sections: this.$store.state.config.sections,
+        page: this.$store.state.config.page,
+        pages: this.$store.state.config.pages
+      }
+    },
     computed: {
       showAlert() {
         if (this.$store.state.ui.connected < 1) {
@@ -92,28 +101,14 @@
         } else {
           return runworthy
         }
-      },
-      sections() {
-        return this.$store.state.config.sections
-      },
-      page() {
-        return this.$store.state.config.page
-      },
-      pages() {
-        return this.$store.state.config.pages
-      },
-      selections: {
-        get () {
-          return this.$store.state.ui.selections
-        },
-        set (value) {
-          this.$store.commit('updateSelections', value)
-        }
-      },
+      }
     },
     methods: {
       goBack() {
         this.$store.commit('updatePage', 0)
+      },
+      updateSelections() {
+          this.$store.commit('updateSelections',this.selections)
       }
     }
   }
