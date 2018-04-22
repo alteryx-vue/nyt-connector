@@ -1,7 +1,7 @@
 {
   "name": "nyt-connector",
   "description": "An Alteryx NYT input connector built with Vue.js and Vuetify",
-  "version": "1.0.0",
+  "version": "1.2.1",
   "author": "Taylor Cox",
   "private": true,
   "scripts": {
@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "axios": "^0.17.1",
-    "npm": "^5.7.1",
+    "npm": "^5.8.0",
     "vue": "^2.5.3",
     "vuelidate": "^0.6.1",
     "vuetify": "^0.17.4",
