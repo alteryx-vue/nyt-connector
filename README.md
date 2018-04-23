@@ -15,13 +15,11 @@ Vue.js is the perfect lightweight JavaScript framework for use within the Altery
 - [NodeJS/npm](https://nodejs.org)
 
 
-## Install/Download
+## Installation
 
 A compiled build can be installed with the [.YXI installer here](https://github.com/alteryx-vue/installers/raw/master/nyt-connector.yxi) or by downloading from the [Alteryx Gallery](https://gallery.alteryx.com/#!app/New-York-Times/5aa5908a0462d716e8cb1e63).  Use the instructions below for installing from source.
 
-### Clone to one of the Alteryx tool directories
-
-Alteryx will typically install tools in one of the following locations:
+#### Alteryx will typically install tools in one of the following locations...
 ``` bash
 C:\Users\{user}\AppData\Roaming\Alteryx\Tools
 C:\Program Files\Alteryx\bin\HtmlPlugins
