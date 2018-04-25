@@ -33,12 +33,13 @@ window.Alteryx.Gui = {
 
 	SetConfiguration: j => {
 
-		const forceArray = (field) => {
-		  return (typeof field == 'string') ? [field] : ((typeof field == 'undefined') ? ([]) : (field))
-		}
+		  // ensure that arrays stay arrays...
+		  const ensureArray = (field) => {
+		    return typeof field == 'string' || (typeof field == 'object' && typeof field.length == 'undefined') ? [field] : typeof field == 'undefined' ? [] : field
+		  }
 		// update Vuex store with Alteryx Designer XML config, if exists
 		store.state.ui = j.Configuration.Configuration || store.state.ui
-		store.state.ui.selections = forceArray(store.state.ui.selections)
+		store.state.ui.selections = ensureArray(store.state.ui.selections)
 		window.Alteryx.JsEvent(JSON.stringify({Event: 'SetConfiguration'}))
 
 	},
